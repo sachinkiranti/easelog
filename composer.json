@@ -9,7 +9,6 @@
             "email": "sachinkiranti@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php" : "^7.0",
         "illuminate/support": "~5.5.0"
