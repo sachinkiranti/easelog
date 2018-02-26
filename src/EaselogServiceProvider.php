@@ -24,14 +24,14 @@ class EaselogServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/easelog.php' => config_path('easelog.php'),
-        ], 'config');
+        ], 'easelog');
 
         $this->mergeConfigFrom(__DIR__.'/../config/easelog.php', 'easelog');
 
         if (! class_exists('CreateEaseLogTable')) {
             $timestamp = date('Y_m_d_His', time());
             $this->publishes([
-                __DIR__.'/../migrations/create_ease_log_table.php.stub' => database_path("/migrations/{$timestamp}_create_ease_log_table.php"),
+                __DIR__.'/../database/migrations/create_ease_log_table.php.stub' => database_path("/migrations/{$timestamp}_create_ease_log_table.php"),
             ], 'migrations');
         }
 
