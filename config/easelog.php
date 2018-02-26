@@ -59,8 +59,7 @@ return [
     |
     */
    'models' => [
-        'User',
-        'Post'
+        'User'
    ]
 
 ];
