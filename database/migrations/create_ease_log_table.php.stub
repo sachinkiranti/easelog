@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateEaseLogTable extends Migration
+{
+
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create('ease_log', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->string('log_type')->nullable();
+            $table->string('log_message')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+
+            $table->timestamps();
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+        Schema::drop('ease_log');
+    }
+
+}
