@@ -1,7 +1,7 @@
 {
     "name": "sachinkiranti/easelog",
     "description": "A simple yet flexible event log activity integration system for laravel.",
-    "type": "php",
+    "type": "laravel",
     "license": "MIT",
     "authors": [
         {
