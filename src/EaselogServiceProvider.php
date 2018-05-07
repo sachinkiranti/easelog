@@ -1,6 +1,6 @@
 <?php
 
-namespace SachinKiranti\Easelog; 
+namespace SachinKiranti\Easelog;
 
 use Illuminate\Support\ServiceProvider;
 use SachinKiranti\Easelog\Exceptions\ModelNotFoundException;
@@ -8,12 +8,12 @@ use SachinKiranti\Easelog\Observer\EaselogObserver;
 
 class EaselogServiceProvider extends ServiceProvider
 {
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
     /**
      * Bootstrap the application services.
@@ -28,7 +28,7 @@ class EaselogServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/../config/easelog.php', 'easelog');
 
-        if (! class_exists('CreateEaseLogTable')) {
+        if (!class_exists('CreateEaseLogTable')) {
             $timestamp = date('Y_m_d_His', time());
             $this->publishes([
                 __DIR__.'/../database/migrations/create_ease_log_table.php.stub' => database_path("/migrations/{$timestamp}_create_ease_log_table.php"),
@@ -36,7 +36,6 @@ class EaselogServiceProvider extends ServiceProvider
         }
 
         $this->setObservers();
-
     }
 
     /**
@@ -46,34 +45,31 @@ class EaselogServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('easelog', function($app)
-        {
+        $this->app->singleton('easelog', function ($app) {
             return $this->app->make('SachinKiranti\Easelog\Easelog');
         });
     }
 
-    public function setObservers() 
+    public function setObservers()
     {
-        if (!config( 'easelog.enable_easelog' )) 
-        { return; }
+        if (!config('easelog.enable_easelog')) {
+            return;
+        }
 
         $namespace = '';
 
-        if (config( 'easelog.use_namespace' ))
-        {
-            $namespace = config( 'easelog.model_namespace' );
+        if (config('easelog.use_namespace')) {
+            $namespace = config('easelog.model_namespace');
         }
-        foreach (config( 'easelog.models' ) as $model)
-        {
-	        $y = $namespace.$model;
-	        $x = new $y();
+        foreach (config('easelog.models') as $model) {
+            $y = $namespace.$model;
+            $x = new $y();
 
 //        	if (!$x->exists()) {
 //        		throw new ModelNotFoundException($y);
-//	        }
+            //	        }
 
-	        $x->observe(new EaselogObserver);
+            $x->observe(new EaselogObserver());
         }
     }
-
 }
