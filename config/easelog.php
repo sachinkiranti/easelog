@@ -4,7 +4,6 @@
  * a simple yet flexible event log activity integration system.
  *
  * @license MIT
- * @package sachinkiranti/easelog
  */
 
 return [
@@ -19,7 +18,7 @@ return [
     */
    'enable_easelog' => true,
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Easelog Message
     |--------------------------------------------------------------------------
@@ -27,7 +26,7 @@ return [
     | Easelog Message required two %s for input log type and model
     |
     */
-   'log_message' => "%s %s successfully.",
+   'log_message' => '%s %s successfully.',
 
     /*
     |--------------------------------------------------------------------------
@@ -59,7 +58,7 @@ return [
     |
     */
    'models' => [
-        'User'
-   ]
+        'User',
+   ],
 
 ];

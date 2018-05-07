@@ -5,8 +5,7 @@ namespace SachinKiranti\Easelog;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class EaselogFacade
- * @package SachinKiranti\Easelog
+ * Class EaselogFacade.
  */
 class EaselogFacade extends Facade
 {
