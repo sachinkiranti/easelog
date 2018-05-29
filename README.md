@@ -1,4 +1,4 @@
-#Easelog
+# Easelog
 
 A simple yet flexible event log activity integration system for laravel.
 ## Installation
